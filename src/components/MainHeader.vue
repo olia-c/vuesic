@@ -8,13 +8,35 @@
         <ul class="flex flex-row mt-1">
           <!-- Navigation Links -->
           <li>
-            <a class="px-2 text-white" href="#">Login / Register</a>
+            <a
+              class="px-2 text-white"
+              href="javascript:void(0)"
+              @click.prevent="toggleAuthModal"
+              >Login / Register</a
+            >
           </li>
           <li>
-            <a class="px-2 text-white" href="#">Manage</a>
+            <a class="px-2 text-white" href="javascript:void(0)">Manage</a>
           </li>
         </ul>
       </div>
     </nav>
   </header>
 </template>
+
+<script>
+import useAuthStore from "@/stores/auth";
+import { mapStores } from "pinia";
+export default {
+  name: "MainHeader",
+  computed: {
+    ...mapStores(useAuthStore),
+  },
+  methods: {
+    toggleAuthModal() {
+      console.log(this.authStore);
+      this.authStore.showModal = !this.authStore.showModal;
+    },
+  },
+};
+</script>

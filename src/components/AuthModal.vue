@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed z-10 inset-0 overflow-y-auto hidden" id="modal">
+  <div v-show="authStore.showModal" class="fixed z-10 inset-0 overflow-y-auto" id="modal">
     <div
       class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
     >
@@ -19,7 +19,7 @@
           <div class="flex justify-between items-center pb-4">
             <p class="text-2xl font-bold">Your Account</p>
             <!-- Modal Close Button -->
-            <div class="modal-close cursor-pointer z-50">
+            <div class="modal-close cursor-pointer z-50" @click.prevent="closeModal">
               <i class="fas fa-times"></i>
             </div>
           </div>
@@ -51,11 +51,24 @@
 <script>
 import LoginForm from "@/components/LoginForm.vue";
 import RegisterForm from "@/components/RegisterForm.vue";
+import useAuthStore from "@/stores/auth";
+import { mapStores } from "pinia";
 export default {
   name: "AuthModal",
+  computed: {
+    ...mapStores(useAuthStore),
+  },
   components: {
     LoginForm,
     RegisterForm,
+  },
+  data() {
+    return {};
+  },
+  methods: {
+    closeModal() {
+      this.authStore = false;
+    },
   },
 };
 </script>

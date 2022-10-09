@@ -11,11 +11,11 @@
 </template>
 
 <script>
-import MainHeader from "./components/MainHeader.vue";
-import AuthModal from "./components/AuthModal.vue";
-import MainBanner from "./components/MainBanner.vue";
-import SongList from "./components/SongList.vue";
-import BottomPlayer from "./components/BottomPlayer.vue";
+import MainHeader from "@/components/MainHeader.vue";
+import AuthModal from "@/components/AuthModal.vue";
+import MainBanner from "@/components/MainBanner.vue";
+import SongList from "@/components/SongList.vue";
+import BottomPlayer from "@/components/BottomPlayer.vue";
 export default {
   name: "App",
   components: {

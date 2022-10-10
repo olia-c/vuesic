@@ -30,9 +30,11 @@
               <a
                 class="block rounded py-3 px-4 transition"
                 href="javascript:void(0)"
-                :class="{
-                  'bg-blue-600 text-white hover:text-white': tab === 'login',
-                }"
+                :class="[
+                  tab === 'login'
+                    ? 'bg-blue-600 text-white hover:text-white'
+                    : 'hover:text-blue-600',
+                ]"
                 @click.prevent="changeTab('login')"
               >
                 Login
@@ -41,9 +43,11 @@
             <li class="flex-auto text-center">
               <a
                 class="block rounded py-3 px-4 transition"
-                :class="{
-                  'bg-blue-600 text-white hover:text-white': tab === 'register',
-                }"
+                :class="[
+                  tab === 'register'
+                    ? 'bg-blue-600 text-white hover:text-white'
+                    : 'hover:text-blue-600',
+                ]"
                 href="javascript:void(0)"
                 @click.prevent="changeTab('register')"
                 >Register</a

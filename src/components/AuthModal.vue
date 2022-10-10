@@ -28,20 +28,33 @@
           <ul class="flex flex-wrap mb-4">
             <li class="flex-auto text-center">
               <a
-                class="block rounded py-3 px-4 transition hover:text-white text-white bg-blue-600"
-                href="#"
-                >Login</a
+                class="block rounded py-3 px-4 transition"
+                href="javascript:void(0)"
+                :class="{
+                  'bg-blue-600 text-white hover:text-white': tab === 'login',
+                }"
+                @click.prevent="changeTab('login')"
               >
+                Login
+              </a>
             </li>
             <li class="flex-auto text-center">
-              <a class="block rounded py-3 px-4 transition" href="#">Register</a>
+              <a
+                class="block rounded py-3 px-4 transition"
+                :class="{
+                  'bg-blue-600 text-white hover:text-white': tab === 'register',
+                }"
+                href="javascript:void(0)"
+                @click.prevent="changeTab('register')"
+                >Register</a
+              >
             </li>
           </ul>
 
           <!-- Login Form -->
-          <login-form />
+          <login-form v-if="tab === 'login'" />
           <!-- Registration Form -->
-          <register-form />
+          <register-form v-else-if="tab === 'register'" />
         </div>
       </div>
     </div>
@@ -63,11 +76,19 @@ export default {
     RegisterForm,
   },
   data() {
-    return {};
+    return {
+      tab: "login",
+    };
   },
   methods: {
     closeModal() {
       this.showModal = false;
+    },
+    changeTab(newTabName) {
+      if (this.tab === newTabName) {
+        return;
+      }
+      this.tab = newTabName;
     },
   },
 };

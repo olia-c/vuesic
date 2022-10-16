@@ -1,5 +1,5 @@
 <template>
-  <vee-form>
+  <vee-form :validation-schema="validationSchema">
     <!-- Name -->
     <div class="mb-3">
       <label class="inline-block mb-2">Name</label>
@@ -9,6 +9,7 @@
         class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
         placeholder="Enter Name"
       />
+      <error-message class="text-red-600" name="name" />
     </div>
     <!-- Email -->
     <div class="mb-3">
@@ -70,4 +71,21 @@
   </vee-form>
 </template>
 
-<script></script>
+<script>
+export default {
+  name: "RegisterForm",
+  data() {
+    return {
+      validationSchema: {
+        name: "required",
+        email: "required",
+        age: "",
+        password: "required",
+        confirm_password: "required",
+        country: "",
+        tos: "",
+      },
+    };
+  },
+};
+</script>
